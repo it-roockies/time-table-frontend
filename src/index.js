@@ -225,6 +225,51 @@ let somebase=[
         "subject": 5
     },
     {
+      "id": 9,
+      "date": "2021-03-08",
+      "period": "2",
+      "group": 5,
+      "classroom": 20,
+      "teacher": 27,
+      "subject": 5
+    },
+    {
+      "id": 9,
+      "date": "2021-03-08",
+      "period": "3",
+      "group": 5,
+      "classroom": 20,
+      "teacher": 27,
+      "subject": 5
+    },
+    {
+      "id": 9,
+      "date": "2021-03-08",
+      "period": "4",
+      "group": 5,
+      "classroom": 20,
+      "teacher": 27,
+      "subject": 5
+    },
+    {
+      "id": 9,
+      "date": "2021-03-08",
+      "period": "5",
+      "group": 5,
+      "classroom": 20,
+      "teacher": 27,
+      "subject": 5
+    },
+    {
+      "id": 9,
+      "date": "2021-03-08",
+      "period": "6",
+      "group": 5,
+      "classroom": 20,
+      "teacher": 27,
+      "subject": 5
+    },
+    {
         "id": 10,
         "date": "2021-03-10",
         "period": "3",
@@ -260,7 +305,7 @@ let somemainebase=[
     groups: []
   }
 ]
-let numberBaseForGroup={
+let baseGroup={
   1:"ME1-19",
   2:"ME2-19",
   3:"ME3-19",
@@ -277,24 +322,30 @@ let numberBaseForGroup={
   16:"IT8-19"
 
 }
-let numberBaseForSubject={
-  1:"math",
+let baseSubject={
+  1:"math ",
   2:"IT",
   3:"SALOM",
-  4:"math",
-  5:"math",
-  6:"MATH",
-  7:"math",
-  8:"math",
-  9:"math",
-  10:"math",
-  11:"math",
-  12:"math",
-  13:"math",
-  14:"math",
+  4:"math ",
+  5:"math ",
+  6:"MATH ",
+  7:"math ",
+  8:"math ",
+  9:"math ",
+  10:"math ",
+  11:"math ",
+  12:"math ",
+  13:"math ",
+  14:"math ",
   
 }
-console.log(somemainebase)
+const baseClass={
+  1:"101",
+  20:"BH "
+}
+const baseTeacher={
+  27:"IH ",
+} 
 
 somebase.forEach((elem)=>{
   const date = new Date(elem.date);
@@ -306,17 +357,13 @@ somebase.forEach((elem)=>{
   if (group === undefined) {
     group = {
       id: elem.group,
-      name: numberBaseForGroup[elem.group],
-      subjects: new Array(6)
+      name: baseGroup[elem.group],
+      subjects: ["","","","","",""]
     }
     groups.push(group);
   }
-  group.subjects[Number(elem.period) - 1] = numberBaseForSubject[elem.subject];
+  group.subjects[Number(elem.period) - 1] = (baseSubject[elem.subject]===undefined ? "" :baseSubject[elem.subject])+(baseClass[elem.classroom]===undefined ? "" :baseClass[elem.classroom])+(baseTeacher[elem.teacher]===undefined?"":baseTeacher[elem.teacher]);
 });
-
-//console.log(somebase[0]["date"].getDay())
-console.log(somemainebase)
-
 let mainbaseffirst=[
   {day:"Monday",
   groups:[
